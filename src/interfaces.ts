@@ -209,6 +209,7 @@ export interface ProgressResponse {
 export interface ModelResponse {
   name: string
   modified_at: Date
+  model: string
   size: number
   digest: string
   details: ModelDetails
