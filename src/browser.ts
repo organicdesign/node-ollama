@@ -176,13 +176,10 @@ async encodeImage(image: Uint8Array | string): Promise<string> {
    * @returns {Promise<ProgressResponse | AbortableAsyncIterator<ProgressResponse>>} - The response object or a stream of progress responses.
    */
   async create(
-    request: CreateRequest,
+    request: CreateRequest
   ): Promise<ProgressResponse | AbortableAsyncIterator<ProgressResponse>> {
     return this.processStreamableRequest<ProgressResponse>('create', {
-      name: request.model,
-      stream: request.stream,
-      modelfile: request.modelfile,
-      quantize: request.quantize,
+      ...request
     })
   }
 

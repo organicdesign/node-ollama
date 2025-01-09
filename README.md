@@ -129,9 +129,14 @@ ollama.create(request)
 
 - `request` `<Object>`: The request object containing create parameters.
   - `model` `<string>` The name of the model to create.
-  - `path` `<string>`: (Optional) The path to the Modelfile of the model to create.
-  - `modelfile` `<string>`: (Optional) The content of the Modelfile to create.
-  - `stream` `<boolean>`: (Optional) When true an `AsyncGenerator` is returned.
+  - `from` `<string>`: The base model to derive from.
+  - `stream` `<boolean>`: (Optional) When true an `AsyncGenerator` is returned
+  - `template` `<string>`: (Optional) The prompt template to use with the model.
+  - `license` `<string|string[]>`: (Optional) The license(s) associated with the model
+  - `system` `<string>`: (Optional) The system prompt for the model.
+  - `parameters` `<Record<string, unknown>>`: (Optional) Additional model parameters as key-value pairs
+  - `messages` `<Message[]>`: (Optional) Initial conversation messages for the model.
+  - `adapters` `<Record<string, string>>`: (Optional) A key-value map of adapter configurations
 - Returns: `<ProgressResponse>`
 
 ### delete
