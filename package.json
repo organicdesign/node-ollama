@@ -38,12 +38,14 @@
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.29.0",
-    "vitest": "^2.1.6",
     "prettier": "^3.2.4",
     "typescript": "^5.3.2",
-    "unbuild": "^2.0.0"
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.6",
+    "file-type": "^19.6.0"
   },
   "dependencies": {
+    "sharp": "^0.33.5",
     "whatwg-fetch": "^3.6.20"
   }
 }
