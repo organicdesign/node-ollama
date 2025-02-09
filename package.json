@@ -43,7 +43,12 @@
     "typescript": "^5.3.2",
     "unbuild": "^2.0.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "whatwg-fetch": "^3.6.20"
+  },
+  "peerDependenciesMeta": {
+    "whatwg-fetch": {
+      "optional": true
+    }
   }
 }
