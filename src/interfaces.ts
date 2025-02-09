@@ -60,11 +60,28 @@ export interface GenerateRequest {
   options?: Partial<Options>
 }
 
-export interface Message {
-  role: string
+export type Message = SystemMessage | AssistantMessage | UserMessage | ToolResponseMessage
+
+export interface SystemMessage {
+  role: "system",
   content: string
-  images?: Uint8Array[] | string[]
+}
+
+export interface AssistantMessage {
+  role: "assistant"
+  content: string
   tool_calls?: ToolCall[]
+}
+
+export interface UserMessage {
+  role: "user",
+  content: string,
+  images?: Uint8Array[] | string[]
+}
+
+export interface ToolResponseMessage {
+  role: "tool",
+  content: string
 }
 
 export interface ToolCall {

@@ -157,7 +157,7 @@ async encodeImage(image: Uint8Array | string): Promise<string> {
   ): Promise<ChatResponse | AbortableAsyncIterator<ChatResponse>> {
     if (request.messages) {
       for (const message of request.messages) {
-        if (message.images) {
+        if ("images" in message && message.images) {
           message.images = await Promise.all(
             message.images.map(this.encodeImage.bind(this)),
           )
