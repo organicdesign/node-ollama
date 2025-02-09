@@ -4,6 +4,7 @@
   "description": "Ollama Javascript library",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "sideEffects": false,
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
