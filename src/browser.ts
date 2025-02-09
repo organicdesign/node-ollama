@@ -21,6 +21,8 @@ import type {
   ProgressResponse,
   PullRequest,
   PushRequest,
+  RerankRequest,
+  RerankResponse,
   ShowRequest,
   ShowResponse,
   StatusResponse,
@@ -307,6 +309,21 @@ async encodeImage(image: Uint8Array | string): Promise<string> {
       headers: this.config.headers
     })
     return (await response.json()) as EmbeddingsResponse
+  }
+
+  /**
+   * Rerank the documents and return at most top_n of them in rank order with scores.
+   * @param request {RerankRequest} - The request object.
+   * @returns {Promise<RerankResponse>} - The response object.
+   */
+  async rerank(request: RerankRequest): Promise<RerankResponse> {
+    if (request.top_n === undefined) {
+      request.top_n = request.documents.length;
+    }
+    const response = await utils.post(this.fetch, `${this.config.host}/api/rerank`, {
+      ...request,
+    })
+    return (await response.json()) as RerankResponse
   }
 
   /**
