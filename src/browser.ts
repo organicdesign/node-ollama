@@ -9,6 +9,8 @@ import type {
   CopyRequest,
   CreateRequest,
   DeleteRequest,
+  DetokenizeRequest,
+  DetokenizeResponse,
   EmbedRequest,
   EmbedResponse,
   EmbeddingsRequest,
@@ -24,6 +26,8 @@ import type {
   ShowRequest,
   ShowResponse,
   StatusResponse,
+  TokenizeRequest,
+  TokenizeResponse,
 } from './interfaces.js'
 import { defaultHost } from './constant.js'
 
@@ -320,9 +324,37 @@ async encodeImage(image: Uint8Array | string): Promise<string> {
     })
     return (await response.json()) as ListResponse
   }
-}
 
+  /**
+   * Tokenizes text into tokens.
+   * @param request {TokenizeRequest} - The request object.
+   * @returns {Promise<TokenizeResponse>} - The response object.
+   */
+  async tokenize(request: TokenizeRequest): Promise<TokenizeResponse> {
+    const response = await utils.post(this.fetch, `${this.config.host}/api/tokenize`, {
+      ...request,
+    }, {
+      headers: this.config.headers
+    })
+    return (await response.json()) as TokenizeResponse
+  }
+
+  /**
+   * Detokenizes tokens back into text.
+   * @param request {DetokenizeRequest} - The request object.
+   * @returns {Promise<DetokenizeResponse>} - The response object.
+   */
+  async detokenize(request: DetokenizeRequest): Promise<DetokenizeResponse> {
+    const response = await utils.post(this.fetch, `${this.config.host}/api/detokenize`, {
+      ...request,
+    }, {
+      headers: this.config.headers
+    })
+    return (await response.json()) as DetokenizeResponse
+  }
+}
 export default new Ollama()
 
 // export all types from the main entry point so that packages importing types dont need to specify paths
 export * from './interfaces.js'
+

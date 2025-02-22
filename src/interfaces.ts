@@ -164,6 +164,16 @@ export interface EmbeddingsRequest {
   options?: Partial<Options>
 }
 
+export interface TokenizeRequest {
+  model: string
+  text: string
+}
+
+export interface DetokenizeRequest {
+  model: string
+  tokens: Int32Array
+}
+
 // response types
 
 export interface GenerateResponse {
@@ -246,6 +256,14 @@ export interface ShowResponse {
 
 export interface ListResponse {
   models: ModelResponse[]
+}
+
+export interface TokenizeResponse {
+  tokens: Int32Array
+}
+
+export interface DetokenizeResponse {
+  text: string
 }
 
 export interface ErrorResponse {
